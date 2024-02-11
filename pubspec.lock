@@ -86,6 +86,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_icon_shadow:
+    dependency: "direct main"
+    description:
+      name: flutter_icon_shadow
+      sha256: "3dbb6d85b3166ced5d8108b442ac447cd9e903b60e566d48659bf72fdbd767f0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.6"
   flutter_lints:
     dependency: "direct dev"
     description:

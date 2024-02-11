@@ -30,7 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: InkWell(child: Center(child: Text('LOGIN')),
                   onTap: (){
                     Navigator.pop(context);
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {return LoginPage();}));
                   },),
                 ),
                 SizedBox(
