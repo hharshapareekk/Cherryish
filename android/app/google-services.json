@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "869985958546",
+    "project_id": "cherryish-65173",
+    "storage_bucket": "cherryish-65173.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869985958546:android:ef4e7881b65acba0d2c44b",
+        "android_client_info": {
+          "package_name": "com.example.cherryish"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzdB99Ys9auigaDHki-PtYblkN9GjLl8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
