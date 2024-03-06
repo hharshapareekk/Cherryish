@@ -1,5 +1,7 @@
 import 'package:cherryish/Styles.dart';
 import 'package:cherryish/database.dart';
+import 'package:cherryish/pages/donee/cartPage.dart';
+import 'package:cherryish/pages/donee/finalOrderPage.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatefulWidget {
@@ -140,20 +142,30 @@ class _ProductPageState extends State<ProductPage> {
                 padding: const EdgeInsets.all(18.0),
                 child: Row(
                   children: [
-                    Container(
-                      width: 150,
-                      height:50,
-                      decoration: customDecoration(),
-                      child: Center(child: Text("ADD TO CART",style: textStyles.alertButtons)),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage()));
+                      },
+                      child: Container(
+                        width: 150,
+                        height:50,
+                        decoration: customDecoration(),
+                        child: Center(child: Text("ADD TO CART",style: textStyles.alertButtons)),
+                      ),
                     ),
                     SizedBox(
                       width: 15,
                     ),
-                    Container(
-                      width: 150,
-                      height:50,
-                      decoration: customDecoration(),
-                      child: Center(child: Text("BUY NOW",style: textStyles.alertButtons,),),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>FinalOrderPage()));
+                      },
+                      child: Container(
+                        width: 150,
+                        height:50,
+                        decoration: customDecoration(),
+                        child: Center(child: Text("SHOP NOW",style: textStyles.alertButtons,),),
+                      ),
                     )
                   ],
                 ),

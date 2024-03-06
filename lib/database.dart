@@ -15,6 +15,24 @@ class Dates {
   }
 }
 
+
+class Donee{
+  final String name;
+  final String address;
+  final String username;
+  final String phoneNumber;
+  final String profilePicture;
+
+  Donee({
+    required this.name,
+    required this.address,
+    required this.phoneNumber,
+    required this.username,
+    required this.profilePicture,
+  });
+}
+
+
 class Donor {
   final String profilePic;
   final String name;
@@ -56,6 +74,17 @@ class Item {
     required this.donors,
     required this.dateAdded,
     required this.Item_Images,
+  });
+}
+class CartDetails {
+  final Item item;
+  int quantity;
+  final Donor donor;
+
+  CartDetails({
+    required this.item,
+    required this.quantity,
+    required this.donor,
   });
 }
 
@@ -227,4 +256,18 @@ class Database {
           "assets/images/dino4.png"
         ]),
   };
+
+  static List<CartDetails> carts = [
+    CartDetails(item: Database.items["Dinosaur"]!, donor: donors[0], quantity:2),
+    CartDetails(item: Database.items["Blanket"]!, donor: donors[2], quantity:3),
+    CartDetails(item: Database.items["Laptop"]!, donor: donors[1], quantity:2),
+    CartDetails(item: Database.items["Fruit Basket"]!, donor: donors[2], quantity:1),
+  ];
+
+
+  static List<Donee> donees= [
+    Donee(name: "Harsha Pareek", address: "Home", phoneNumber: "9191", username: "harsheyssyrup", profilePicture: "assets/images/profilepic2.png"),
+    Donee(name: "Shravani Nomulwar", address: "House", phoneNumber: "4242", username: "shravnomulwar", profilePicture: "assets/images/profilePic.png"),
+
+  ];
 }
