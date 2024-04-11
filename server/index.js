@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 
 //Imports from other files
 const authRouter = require("./routes/auth.js");
+const DB = require('../keys.js');
 
 // Init
 const PORT = 3000;
 const app = express();
-const DB = "mongodb+srv://harsha:adminharsha@cluster01.gdvpcj2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01"
 
 //Middleware
 //Client -> Server -> Client (STOPS , not continuos listening( req socket io for that))
