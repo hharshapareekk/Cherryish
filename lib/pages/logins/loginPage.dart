@@ -1,4 +1,3 @@
-import 'package:cherryish/functions/auth.dart';
 import 'package:cherryish/pages/homeScreen.dart';
 import 'package:cherryish/pages/logins/signUpPage.dart';
 import 'package:flutter/material.dart';
@@ -186,13 +185,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 onTap: () {
-                  if (_formkey.currentState!.validate()) {
-                    _formkey.currentState!.save();
-                    Login(email, password);
                   Navigator.pop(context);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => HomeScreen()));
-                  }
+                  
                 },
               )
             ],

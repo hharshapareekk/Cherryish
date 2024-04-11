@@ -1,4 +1,3 @@
-import 'package:cherryish/functions/auth.dart';
 import 'package:cherryish/pages/homeScreen.dart';
 import 'package:cherryish/pages/logins/loginPage.dart';
 import 'package:flutter/material.dart';
@@ -239,7 +238,6 @@ class _SignUpPageState extends State<SignUpPage> {
   if (_formkey.currentState!.validate()) {
     _formkey.currentState!.save();
     if (email.isNotEmpty && password.isNotEmpty) { // Check if email and password are not empty
-      signUp(email, password);
       Navigator.pop(context);
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -247,7 +245,7 @@ class _SignUpPageState extends State<SignUpPage> {
       print('Email or password is empty.');
     }
   }
-},  
+}, 
 
               )
             ],

@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Center(
                       child: Text(
-                    'BUY',
+                    'RECEIVE',
                     style: TextStyle(fontSize: 30.0, color: Colors.white,fontWeight: FontWeight.bold),
                     
                   )),

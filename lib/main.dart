@@ -1,13 +1,12 @@
-import 'package:cherryish/pages/donor/donorPage.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:cherryish/pages/logins/loginPage.dart';
 import 'package:flutter/material.dart';
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: DonorPage(),)
+    home: LoginPage(),)
       );
 }
