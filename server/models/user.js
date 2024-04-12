@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const userSchema = mongoose.Schema({
+const userSchema = new Schema({
   username: {
     required: true,
     type: String,
-    trim: true, //removes all leading and trailing spaces
+    trim: true,
   },
   email: {
     required: true,
@@ -16,29 +17,28 @@ const userSchema = mongoose.Schema({
           /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         return value.match(re);
       },
-      //message runs only if value entered above is false
-      message : 'Please enter a valid email address'
+      message: 'Please enter a valid email address',
     },
   },
-  password : {
-    required :true,
-    type : String,
-    validate:{
-        Validator:(value) => {
-            return value.length > 6;
-        },
-        message: "Password length should be atleast 8 characters",
-    }
+  password: {
+    required: true,
+    type: String,
+    validate: {
+      validator: (value) => {
+        return value.length > 6;
+      },
+      message: "Password length should be atleast 8 characters",
+    },
   },
-  address : {
-    type :String,
-    default :'',
+  address: {
+    type: String,
+    default: '',
   },
-  type:{
-    type:String,
-    default:'user',
-  }
+  type: {
+    type: String,
+    default: 'user',
+  },
 });
 
-const User = mongoose.model('User',userSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;
