@@ -1,4 +1,5 @@
 import 'package:cherryish/constants/globalVariables.dart';
+import 'package:cherryish/pages/homeScreen.dart';
 import 'package:cherryish/pages/logins/loginPage.dart';
 import 'package:cherryish/services/auth_service.dart';
 import 'package:cherryish/widgets/custom_textField.dart';
@@ -182,6 +183,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         onTap: () {
                           if (_signUpFormKey.currentState!.validate()) {
                             SignUpUser();
+                            Navigator.push(context,MaterialPageRoute(builder: (context)=> HomeScreen()));
                           }
                         },
                       )
@@ -189,30 +191,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 80.0,
-              ),
-              InkWell(
-                child: Container(
-                  height: 70.0,
-                  width: 230.0,
-                  child: Center(
-                    child: Text(
-                      'SIGN UP',
-                      style: TextStyle(
-                          fontSize: 40.0,
-                          color: Colors.white,
-                          letterSpacing: 5.0),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(100.0),
-                    border: Border.all(color: Colors.white, width: 3.0),
-                  ),
-                ),
-                onTap: () {},
-              )
+              
             ],
           ),
         ),
