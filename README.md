@@ -11,7 +11,6 @@ Users can easily navigate through the listings, make requests, and coordinate th
 ### Who is it for?
 You ;)
 
- Anybody to everybody who aims to donate or buy items without hassle
 ### People who scratched their heads for a commit:<br>
 * Harsha <br>
 * Aditi <br>
