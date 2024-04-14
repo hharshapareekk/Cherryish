@@ -8,18 +8,41 @@ void httpErrorHandlingFn({
   required http.Response response,
   required BuildContext context,
   required VoidCallback onSuccess,
-  }) {
-    switch(response.statusCode){
+}) {
+  try {
+    if (response.body.isEmpty) {
+      showSnackBar(context, 'Empty response from server');
+      return;
+    }
+    
+    Map<String, dynamic> responseBody = jsonDecode(response.body);
+    
+    switch(response.statusCode) {
       case 200:
-      onSuccess();
-      break;
+        onSuccess();
+        break;
       case 400:
-        showSnackBar(context,jsonDecode(response.body)['msg']);
+        if (responseBody.containsKey('msg')) {
+          showSnackBar(context, responseBody['msg']);
+        } else {
+          showSnackBar(context, 'Bad request');
+        }
         break;
       case 500:
-        showSnackBar(context,jsonDecode(response.body)['error']);
+        if (responseBody.containsKey('error')) {
+          showSnackBar(context, responseBody['error']);
+        } else {
+          showSnackBar(context, 'Internal server error');
+        }
         break;
       default:
-        showSnackBar(context,jsonDecode(response.body)['error']);
+        if (responseBody.containsKey('error')) {
+          showSnackBar(context, responseBody['error']);
+        } else {
+          showSnackBar(context, 'Unknown error');
+        }
     }
+  } catch (e) {
+    showSnackBar(context, 'Error handling response: $e');
   }
+}

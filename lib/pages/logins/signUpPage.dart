@@ -1,8 +1,6 @@
 import 'package:cherryish/constants/globalVariables.dart';
-import 'package:cherryish/pages/homeScreen.dart';
 import 'package:cherryish/pages/logins/loginPage.dart';
 import 'package:cherryish/services/auth_service.dart';
-import 'package:cherryish/widgets/custom_textField.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -16,19 +14,11 @@ class _SignUpPageState extends State<SignUpPage> {
   late GlobalKey<FormState> _formkey; // Initialize _formkey
   final _signUpFormKey = GlobalKey<FormState>();
   final AuthService authService = AuthService();
-  String email = '';
-  String password = '';
-  String username = '';
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    _formkey = GlobalKey<FormState>(); // Initialize _formkey
-  }
-   @override
   void dispose() {
     super.dispose();
     _emailController.dispose();
@@ -38,7 +28,11 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void SignUpUser() {
     authService.signUpUser(
-        context: context, email: email, username: username, password: password);
+      context: context,
+      email: _emailController.text,
+      username: _usernameController.text,
+      password: _passwordController.text,
+    );
   }
 
   @override
@@ -121,9 +115,18 @@ class _SignUpPageState extends State<SignUpPage> {
                             BoxShadow(color: Colors.black.withOpacity(0.7))
                           ],
                         ),
-                        child: CustomTextField(
+                        child: TextFormField(
                           controller: _usernameController,
-                          hintText: 'Username',
+                          decoration: InputDecoration(
+                            hintText: 'Username',
+                          
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a username';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -138,9 +141,18 @@ class _SignUpPageState extends State<SignUpPage> {
                             BoxShadow(color: Colors.black.withOpacity(0.7))
                           ],
                         ),
-                        child: CustomTextField(
+                        child: TextFormField(
                           controller: _emailController,
-                          hintText: 'Email',
+                          decoration: InputDecoration(
+                            hintText: 'Email',
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter an email';
+                            }
+                           
+                            return null;
+                          },
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -155,9 +167,18 @@ class _SignUpPageState extends State<SignUpPage> {
                             BoxShadow(color: Colors.black.withOpacity(0.7))
                           ],
                         ),
-                        child: CustomTextField(
+                        child: TextFormField(
                           controller: _passwordController,
-                          hintText: 'Password',
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a password';
+                            }
+                            // You can add more specific password validation logic if needed
+                            return null;
+                          },
                         ),
                       ),
                       const SizedBox(height: 80),
@@ -183,7 +204,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         onTap: () {
                           if (_signUpFormKey.currentState!.validate()) {
                             SignUpUser();
-                            Navigator.push(context,MaterialPageRoute(builder: (context)=> HomeScreen()));
                           }
                         },
                       )
@@ -191,7 +211,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
               ),
-              
             ],
           ),
         ),

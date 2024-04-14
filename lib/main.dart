@@ -1,4 +1,4 @@
-import 'package:cherryish/pages/logins/loginPage.dart';
+import 'package:cherryish/pages/logins/signUpPage.dart';
 import 'package:flutter/material.dart';
 
 
@@ -7,6 +7,6 @@ void main() async{
 
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: LoginPage(),)
+    home: SignUpPage(),)
       );
 }

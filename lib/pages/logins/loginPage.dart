@@ -1,5 +1,5 @@
-import 'package:cherryish/pages/homeScreen.dart';
 import 'package:cherryish/pages/logins/signUpPage.dart';
+import 'package:cherryish/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -10,10 +10,27 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-   final _formkey = GlobalKey<FormState>();
-  String email = '';
-  String password = '';
-  String username = '';
+  late GlobalKey<FormState> _formkey; // Initialize _formkey
+  final _signInFormKey = GlobalKey<FormState>();
+  final AuthService authService = AuthService();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+
+@override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
+   void SignInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,88 +102,63 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Form(
-                  key: _formkey,
-                  child: Container(
-                    child: TextFormField(
-                      key: ValueKey('email'),
-                      decoration: InputDecoration(
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          prefixText: '   ',
-                          hintText: "  Enter your username or email"),
-                      validator: (value) {
-                        if (!(value.toString().contains('@'))) {
-                          return 'invalid email';
-                        } else {
-                          return null;
-                        }
-                      },
-                      onSaved: (value) {
-                        setState(() {
-                          email = value!;
-                        });
-                      },
-                    ),
-                    height: 50.0,
-                    width: 270.0,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.circular(100.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black.withOpacity(0.7))
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Container(
-                  alignment: Alignment.centerLeft,
-                  child: Text('                  Password')),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: TextFormField(
-                    key: ValueKey('Password'),
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      prefixText: '   ',
-                      hintText: '   Enter Password',
-                    ),
-                     validator: (value) {
-                      if (value.toString().length < 6) {
-                        return 'Password is small';
-                      } else {
-                        return null;
-                      }
-                    },
-                    onSaved: (value) {
-                      setState(() {
-                        password = value!;
-                      });
-                    },
-                  ),
-                  height: 50.0,
-                  width: 270.0,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(100.0),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(color: Colors.black.withOpacity(0.7))
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 80.0,
-              ),
-              InkWell(
+                  key: _signInFormKey,
+
+
+                   child: Column(
+                    children: [
+                      Container(
+                        height: 50.0,
+                        width: 270.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(100.0),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(color: Colors.black.withOpacity(0.7))
+                          ],
+                        ),
+                        child: TextFormField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            hintText: 'Email',
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter an email';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        height: 50.0,
+                        width: 270.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(100.0),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(color: Colors.black.withOpacity(0.7))
+                          ],
+                        ),
+                        child: TextFormField(
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a password';
+                            }
+                            // You can add more specific password validation logic if needed
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 80),
+                      InkWell(
                 child: Container(
                   height: 70.0,
                   width: 230.0,
@@ -185,12 +177,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                   if (_signInFormKey.currentState!.validate()) {
+                            SignInUser();
+                          }
                   
                 },
               )
+                    ],
+                  ),
+                 
+                ),
+              ),
+              
             ],
           ),
         ),
@@ -198,3 +196,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
