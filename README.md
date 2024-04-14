@@ -8,6 +8,10 @@ The application will utilize Node.js as its backend software, MongoDB for databa
 By leveraging Flutter's cross-platform functionality, the project will deliver a mobile-centric experience catering to the diverse needs of its user base. 
 Users can easily navigate through the listings, make requests, and coordinate the pickup or delivery of donations. This project aligns with the spirit of mutual aid, offering a practical and accessible solution to address pressing social challenges.
 
+### Who is it for?
+You ;)
+
+ Anybody to everybody who aims to donate or buy items without hassle
 ### People who scratched their heads for a commit:<br>
 * Harsha <br>
 * Aditi <br>
