@@ -6,6 +6,7 @@ import 'package:cherryish/constants/utils.dart';
 import 'package:cherryish/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   // Signup user
@@ -75,7 +76,9 @@ class AuthService {
         httpErrorHandlingFn(
           response: res,
           context: context,
-          onSuccess: () {
+          onSuccess: () async{
+            SharedPreferences prefs =  await SharedPreferences.getInstance();
+            await prefs.setString('x-auth-token',jsonDecode(res.body)['token']);
           },
         );
       } catch (e) {

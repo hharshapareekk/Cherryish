@@ -15,7 +15,8 @@ dependencies:
     sdk: flutter
   lottie: ^2.7.0
   flutter_icon_shadow: ^2.0.6
-
+  provider: ^6.1.2
+  shared_preferences: ^2.2.3
 
 
 
