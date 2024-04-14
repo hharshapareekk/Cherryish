@@ -1,7 +1,9 @@
 import 'package:cherryish/pages/donee/buyerPage.dart';
 import 'package:cherryish/pages/donor/donorPage.dart';
+import 'package:cherryish/providers/userProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -12,8 +14,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   Widget build(BuildContext context) {
+      final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
         body: Column(
       children: [
