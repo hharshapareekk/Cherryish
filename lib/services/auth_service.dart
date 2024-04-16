@@ -58,8 +58,51 @@ class AuthService {
     }
   }
 
-//sign in user
-   Future<void> signInUser({
+//get user data
+   Future<void> getUserData({
+    required BuildContext context,
+
+  }) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('x-auth-token');
+
+      if(token == null)
+      {
+        prefs.setString('x-auth-token', '');
+      }
+
+      
+      // http.Response res = await http.post(
+      //   Uri.parse('$uri/api/signin'),
+      //   body: jsonEncode({
+      //     'email':email,
+      //     'password':password,
+      //   }),
+      //   headers: <String, String>{
+      //     'Content-Type': 'application/json; charset=UTF-8',
+      //   },
+      // );
+     
+        // httpErrorHandlingFn(
+        //   response: res,
+        //   context: context,
+        //   onSuccess: () async{
+        //     SharedPreferences prefs =  await SharedPreferences.getInstance();
+        //     Provider.of<UserProvider>(context,listen: false).setUser(res.body);
+        //     await prefs.setString('x-auth-token',jsonDecode(res.body)['token']);
+        //     Navigator.pop(context);
+        //     Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+            
+        //   },
+        // );
+      } catch (e) {
+      // Handle any exceptions that occur during the signup process
+      showSnackBar(context, e.toString());
+    }
+    }}
+
+    Future<void> signInUser({
     required BuildContext context,
     required String email,
     required String password,
@@ -92,4 +135,4 @@ class AuthService {
       // Handle any exceptions that occur during the signup process
       showSnackBar(context, e.toString());
     }
-    }}
+    }
