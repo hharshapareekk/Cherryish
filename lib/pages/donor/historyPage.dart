@@ -1,4 +1,4 @@
-import 'package:cherryish/pages/donor/bottomNavBar.dart';
+import 'package:cherryish/pages/donor/widgets/bottomNavBar.dart';
 import 'package:flutter/material.dart';
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});

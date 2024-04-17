@@ -1,4 +1,4 @@
-import 'package:cherryish/pages/donor/donorPage.dart';
+import 'package:cherryish/pages/donor/addProductPage.dart';
 import 'package:cherryish/providers/userProvider.dart';
 import 'package:cherryish/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +50,7 @@ class MyAppBody extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           // home: userProvider.user.token.isNotEmpty ? HomeScreen() : LoginPage(),
-          home: DonorPage(),
+          home: AddProductPage(),
         );
       },
     );

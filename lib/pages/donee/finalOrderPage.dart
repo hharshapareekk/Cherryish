@@ -1,6 +1,6 @@
 import 'package:cherryish/Styles.dart';
 import 'package:cherryish/database.dart';
-import 'package:cherryish/pages/donee/buyerPage.dart';
+import 'package:cherryish/pages/donee/widgets/submitAlert.dart';
 import 'package:flutter/material.dart';
 
 class FinalOrderPage extends StatelessWidget {
@@ -58,28 +58,7 @@ class FinalOrderPage extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                   showDialog(
-                context: context,
-                builder: (ctx) => AlertDialog(
-                  title: const Text("Order Successful !!!"),
-                  content: const Text("Your Order Has Been Placed"),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>BuyerPage()));
-                      },
-                      child: Container(
-                        color: Colors.blue,
-                        width: 80,
-                        height: 50,
-                        padding: const EdgeInsets.all(14),
-                        child: const Text("Close",style: TextStyle(color: Colors.white,fontSize: 20)),
-                      ),
-                    ),
-                  ],
-                ),
-              );
+                   FinalSubmitAlert(context);
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
