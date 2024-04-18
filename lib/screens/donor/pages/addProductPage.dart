@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cherryish/Styles.dart';
 import 'package:cherryish/constants/utils.dart';
 import 'package:cherryish/screens/donor/services/donor_services.dart';
+import 'package:cherryish/screens/donor/widgets/finalAddAlert.dart';
 import 'package:flutter/material.dart';
 
 class AddProductPage extends StatefulWidget {
@@ -225,6 +226,7 @@ class _AddProductPageState extends State<AddProductPage> {
                       child: GestureDetector(
                         onTap: () {
                           donateProduct();
+                          FinalAddAlert(context);
                           
                         },
                         child: Container(

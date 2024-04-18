@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cherryish/constants/error_handling.dart';
@@ -19,7 +20,7 @@ class DonorServices {
     required List<File> images,
     required bool isPerishable,
   }) async {
-    final userProvider = Provider.of<UserProvider>(context,listen:false);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
       final cloudinary = CloudinaryPublic(cloudName, uploadPreset);
       List<String> imageUrls = [];
@@ -34,18 +35,50 @@ class DonorServices {
           images: imageUrls,
           category: category,
           isPerishable: isPerishable);
-       http.Response res = await http.post(Uri.parse('$uri/donor/add-product'), headers: <String, String>{
+      http.Response res = await http.post(
+        Uri.parse('$uri/donor/add-product'),
+        headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
         },
-        body: product.toJson(),);
+        body: product.toJson(),
+      );
 
-        httpErrorHandlingFn(response: res, context: context, onSuccess: (){
-          showSnackBar(context, 'Product Added Successfully');
-          Navigator.pop(context);
-        });
+      httpErrorHandlingFn(
+          response: res,
+          context: context,
+          onSuccess: () {
+            showSnackBar(context, 'Product Added Successfully');
+            Navigator.pop(context);
+          });
     } catch (e) {
       showSnackBar(context, e.toString());
     }
+  }
+
+  Future<List<Product>> fetchAllProducts(BuildContext context) async {
+    final userProvider = Provider.of<UserProvider>(context);
+    List<Product> ProductList = [];
+    try {
+      http.Response response =
+          await http.get(Uri.parse('$uri/donor/get-products'), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'x-auth-token': userProvider.user.token,
+      });
+
+      httpErrorHandlingFn(
+          response: response,
+          context: context,
+          onSuccess: () {
+            for (int i = 0; i < jsonDecode(response.body).length; i++) {
+              ProductList.add(
+                Product.fromJson(jsonEncode(jsonDecode(response.body)[i])),
+              );
+            }
+          });
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return ProductList;
   }
 }
