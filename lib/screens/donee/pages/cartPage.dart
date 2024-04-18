@@ -1,6 +1,6 @@
 import 'package:cherryish/Styles.dart';
 import 'package:cherryish/database.dart';
-import 'package:cherryish/pages/donee/finalOrderPage.dart';
+import 'package:cherryish/screens/donee/pages/finalOrderPage.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatelessWidget {

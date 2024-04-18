@@ -1,9 +1,9 @@
 import 'package:cherryish/Styles.dart';
 import 'package:cherryish/database.dart';
-import 'package:cherryish/pages/donee/cartPage.dart';
-import 'package:cherryish/pages/donee/orderHistory.dart';
-import 'package:cherryish/pages/donee/productPage.dart';
-import 'package:cherryish/pages/donee/searchPage.dart';
+import 'package:cherryish/screens/donee/pages/cartPage.dart';
+import 'package:cherryish/screens/donee/pages/orderHistory.dart';
+import 'package:cherryish/screens/donee/pages/productPage.dart';
+import 'package:cherryish/screens/donee/pages/searchPage.dart';
 import 'package:flutter/material.dart';
 
 class BuyerPage extends StatefulWidget {

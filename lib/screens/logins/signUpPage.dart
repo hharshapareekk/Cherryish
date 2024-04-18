@@ -1,5 +1,4 @@
-import 'package:cherryish/constants/globalVariables.dart';
-import 'package:cherryish/pages/logins/loginPage.dart';
+import 'package:cherryish/screens/logins/loginPage.dart';
 import 'package:cherryish/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -99,7 +98,6 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                color: GlobalVariables.backgroundColor,
                 child: Form(
                   key: _signUpFormKey,
                   child: Column(

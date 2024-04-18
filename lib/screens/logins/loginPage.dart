@@ -1,4 +1,4 @@
-import 'package:cherryish/pages/logins/signUpPage.dart';
+import 'package:cherryish/screens/logins/signUpPage.dart';
 import 'package:cherryish/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -152,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                             if (value == null || value.isEmpty) {
                               return 'Please enter a password';
                             }
-                            // You can add more specific password validation logic if needed
+
                             return null;
                           },
                         ),

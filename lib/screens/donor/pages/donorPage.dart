@@ -1,7 +1,7 @@
 import 'package:cherryish/Styles.dart';
 import 'package:cherryish/database.dart';
-import 'package:cherryish/pages/donor/addProductPage.dart';
-import 'package:cherryish/pages/donor/widgets/bottomNavBar.dart';
+import 'package:cherryish/screens/donor/pages/addProductPage.dart';
+import 'package:cherryish/screens/donor/widgets/bottomNavBar.dart';
 import 'package:flutter/material.dart';
 
 class DonorPage extends StatefulWidget {

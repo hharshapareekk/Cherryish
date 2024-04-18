@@ -1,4 +1,4 @@
-import 'package:cherryish/pages/donor/addProductPage.dart';
+import 'package:cherryish/screens/donor/pages/addProductPage.dart';
 import 'package:cherryish/providers/userProvider.dart';
 import 'package:cherryish/services/auth_service.dart';
 import 'package:flutter/material.dart';

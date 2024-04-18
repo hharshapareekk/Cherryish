@@ -1,4 +1,4 @@
-import 'package:cherryish/pages/donee/buyerPage.dart';
+import 'package:cherryish/screens/donee/pages/buyerPage.dart';
 import 'package:flutter/material.dart';
 Future FinalSubmitAlert(BuildContext context){
   return showDialog(

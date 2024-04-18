@@ -1,5 +1,5 @@
-import 'package:cherryish/pages/donee/buyerPage.dart';
-import 'package:cherryish/pages/donor/donorPage.dart';
+import 'package:cherryish/screens/donee/pages/buyerPage.dart';
+import 'package:cherryish/screens/donor/pages/donorPage.dart';
 import 'package:cherryish/providers/userProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';

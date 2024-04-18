@@ -1,6 +1,6 @@
 import 'package:cherryish/Styles.dart';
 import 'package:cherryish/database.dart';
-import 'package:cherryish/pages/donee/widgets/submitAlert.dart';
+import 'package:cherryish/screens/donee/widgets/submitAlert.dart';
 import 'package:flutter/material.dart';
 
 class FinalOrderPage extends StatelessWidget {

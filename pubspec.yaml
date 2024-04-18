@@ -25,6 +25,7 @@ dependencies:
   
   file_picker: ^8.0.0+1
   carousel_slider: ^4.2.1
+  cloudinary_public: ^0.23.1
   
 dev_dependencies:
   flutter_test:

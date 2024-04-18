@@ -1,4 +1,4 @@
-import 'package:cherryish/pages/donor/widgets/bottomNavBar.dart';
+import 'package:cherryish/screens/donor/widgets/bottomNavBar.dart';
 import 'package:flutter/material.dart';
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

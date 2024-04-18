@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 //Imports from other files
 const authRouter = require("./routes/auth.js");
 const DBkey = require('./keys.js');
+const donorRouter = require("./routes/donor.js");
 
 // Init
 const PORT = 3000;
@@ -12,10 +13,10 @@ const app = express();
 const DB = DBkey;
 
 //Middleware
-//Client -> Server -> Client (STOPS , not continuos listening( req socket io for that))
+//Client -> Server -> Client (STOPS , not continuous listening( req socket io for that))
 app.use(express.json());
 app.use(authRouter); // now knows existence of authRouter
-
+app.use(donorRouter);
 
 //Connections
 

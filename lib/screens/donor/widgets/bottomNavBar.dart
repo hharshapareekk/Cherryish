@@ -1,6 +1,6 @@
-import 'package:cherryish/pages/donor/donorPage.dart';
-import 'package:cherryish/pages/donor/historyPage.dart';
-import 'package:cherryish/pages/donor/profilePage.dart';
+import 'package:cherryish/screens/donor/pages/donorPage.dart';
+import 'package:cherryish/screens/donor/pages/historyPage.dart';
+import 'package:cherryish/screens/donor/pages/profilePage.dart';
 import 'package:flutter/material.dart';
 
 Widget BottomBar(BuildContext context) {

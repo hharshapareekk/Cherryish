@@ -1,4 +1,4 @@
-import 'package:cherryish/pages/donor/donorPage.dart';
+import 'package:cherryish/screens/donor/pages/donorPage.dart';
 import 'package:flutter/material.dart';
 Future FinalAddAlert(BuildContext context){
   return showDialog(
