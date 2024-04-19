@@ -8,6 +8,7 @@ import 'package:cherryish/models/product.dart';
 import 'package:cherryish/providers/userProvider.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
@@ -56,12 +57,12 @@ class DonorServices {
     }
   }
 
-  Future<List<Product>> fetchAllProducts(BuildContext context) async {
+  Future<List<Product>> fetchAllProducts(BuildContext context,  VoidCallback onSuccess) async {
     final userProvider = Provider.of<UserProvider>(context,listen:false);
     List<Product> ProductList = [];
     try {
       http.Response response =
-          await http.get(Uri.parse('$uri/donor/get-products'), headers: {
+          await http.get(Uri.parse('$uri/donor/delete-product'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
@@ -73,12 +74,40 @@ class DonorServices {
             for (int i = 0; i < jsonDecode(response.body).length; i++) {
               ProductList.add(
                 Product.fromJson(jsonEncode(jsonDecode(response.body)[i])),
+
               );
+              onSuccess();
             }
           });
     } catch (e) {
       showSnackBar(context, e.toString());
     }
     return ProductList;
+  }
+
+  void deleteProduct({required BuildContext context, required Product product, required VoidCallback onSuccess}) async{
+     final userProvider = Provider.of<UserProvider>(context, listen: false);
+    try {
+      
+      http.Response res = await http.post(
+        Uri.parse('$uri/donor/add-product'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': userProvider.user.token,
+        },
+        body: jsonEncode({
+          'id': product.id,
+        }),
+      );
+
+      httpErrorHandlingFn(
+          response: res,
+          context: context,
+          onSuccess: () {
+           onSuccess();
+          });
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
   }
 }

@@ -26,6 +26,18 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {});
   }
 
+  void deleteProduct(Product product, int index) {
+    donorServices.deleteProduct(
+        context: context,
+        product: product,
+        onSuccess: () {
+          products!.removeAt(index);
+          setState(() {
+            
+          });
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return products == null
@@ -38,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       SizedBox(height: 50),
                       GridView.builder(
-                        itemCount: products!.length,
+                          itemCount: products!.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2),
@@ -46,15 +58,28 @@ class _ProfilePageState extends State<ProfilePage> {
                             final productData = products![index];
                             return Column(
                               children: [
-                                SizedBox(height: 140,
-                                child: SingleProduct(image: productData.images[0]),),
-                                Row(mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Expanded(child: Text(productData.name,overflow: TextOverflow.ellipsis,maxLines: 2,)),
-                                  IconButton(onPressed: (){
-
-                                  }, icon: Icon(Icons.delete_outline)),
-                                ],)
+                                SizedBox(
+                                  height: 140,
+                                  child: SingleProduct(
+                                      image: productData.images[0]),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                        child: Text(
+                                      productData.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                    )),
+                                    IconButton(
+                                        onPressed: () {
+                                          deleteProduct(productData, index);
+                                        },
+                                        icon: Icon(Icons.delete_outline)),
+                                  ],
+                                )
                               ],
                             );
                           })

@@ -21,7 +21,7 @@ donorRouter.post("/donor/add-product", auth, async (req, res) => {
 });
 
 // get all the products
-// /admin/get-all-products
+// /donor/get-all-products
 donorRouter.get("/donor/get-products", auth, async (req, res) => {
   try {
     const products = await Product.find({});
@@ -31,4 +31,15 @@ donorRouter.get("/donor/get-products", auth, async (req, res) => {
   }
 });
 
+// delete all products
+donorRouter.post("/donor/delete-product",auth,async(req,res)=>{
+try{
+  const {id} = req.body;
+  let product = await Product.findByIdAndDelete(id);
+  res.json(product);
+
+  
+}catch(e){
+ res.status(500).json({ error: e.message });
+}})
 module.exports = donorRouter;
