@@ -1,5 +1,5 @@
 import 'package:cherryish/providers/userProvider.dart';
-import 'package:cherryish/screens/donor/pages/donorPage.dart';
+import 'package:cherryish/screens/donee/pages/buyerPage.dart';
 import 'package:cherryish/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -50,7 +50,7 @@ class MyAppBody extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           // home: userProvider.user.token.isNotEmpty ? HomeScreen() : LoginPage(),
-          home: DonorPage(),
+          home: BuyerPage(),
         );
       },
     );

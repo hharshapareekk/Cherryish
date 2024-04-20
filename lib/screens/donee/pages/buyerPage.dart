@@ -4,15 +4,16 @@ import 'package:cherryish/screens/donee/pages/cartPage.dart';
 import 'package:cherryish/screens/donee/pages/orderHistory.dart';
 import 'package:cherryish/screens/donee/pages/productPage.dart';
 import 'package:cherryish/screens/donee/pages/searchPage.dart';
+import 'package:cherryish/screens/donee/widgets/topCategories.dart';
 import 'package:flutter/material.dart';
 
 class BuyerPage extends StatefulWidget {
   const BuyerPage({Key? key});
 
   @override
-  State<BuyerPage> createState() => _DonorPageState();
+  State<BuyerPage> createState() => _BuyerPageState();
 }
-class _DonorPageState extends State<BuyerPage> {
+class _BuyerPageState extends State<BuyerPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,9 @@ class _DonorPageState extends State<BuyerPage> {
               style: TextStyle(color: Colors.black, fontSize: 25.0),
             ),
             backgroundColor: Colors.white,
+          ),
+          SliverToBoxAdapter(
+            child: TopCategories(context),
           ),
           SliverPadding(
             padding: const EdgeInsets.all(8.0),

@@ -37,4 +37,5 @@ flutter:
   assets:
   - assets/animations/
   - assets/images/
+  - assets/images/top-categories/
  

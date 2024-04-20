@@ -57,9 +57,10 @@ class DonorServices {
     }
   }
 
-  Future<List<Product>> fetchAllProducts(BuildContext context,  VoidCallback onSuccess) async {
+  Future<List<Product>> fetchAllProducts(BuildContext context,  ) async {
     final userProvider = Provider.of<UserProvider>(context,listen:false);
     List<Product> ProductList = [];
+    
     try {
       http.Response response =
           await http.get(Uri.parse('$uri/donor/delete-product'), headers: {
@@ -76,7 +77,7 @@ class DonorServices {
                 Product.fromJson(jsonEncode(jsonDecode(response.body)[i])),
 
               );
-              onSuccess();
+              
             }
           });
     } catch (e) {
