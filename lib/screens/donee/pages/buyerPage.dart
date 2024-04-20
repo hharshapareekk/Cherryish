@@ -4,7 +4,6 @@ import 'package:cherryish/screens/donee/pages/cartPage.dart';
 import 'package:cherryish/screens/donee/pages/orderHistory.dart';
 import 'package:cherryish/screens/donee/pages/productPage.dart';
 import 'package:cherryish/screens/donee/pages/searchPage.dart';
-import 'package:cherryish/screens/donee/widgets/topCategories.dart';
 import 'package:flutter/material.dart';
 
 class BuyerPage extends StatefulWidget {
@@ -27,9 +26,7 @@ class _BuyerPageState extends State<BuyerPage> {
             ),
             backgroundColor: Colors.white,
           ),
-          SliverToBoxAdapter(
-            child: TopCategories(context),
-          ),
+         
           SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverGrid(
