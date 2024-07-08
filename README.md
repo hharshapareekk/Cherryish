@@ -1,4 +1,4 @@
-# cherryish
+# Incline
 ### USER-TO-USER DONATION APP
 
 In our increasingly interconnected world, addressing societal needs requires innovative solutions. This project proposes the development of a user-to-user donation application
